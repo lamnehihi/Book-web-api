@@ -5,13 +5,10 @@
  */
 package Model;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
 /**
  *
  * @author Admin
  */
-@XmlRootElement
 public class Book {
     private String bId;
     private String bName;

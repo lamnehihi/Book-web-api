@@ -109,7 +109,7 @@ public class BookDB implements DatabaseInfo {
             return null;
         }
     }
-
+   
     //--------------------------------------------------------------------
     public static ArrayList<Book> getByCategoryID(String cateID) {
         Book b = null;
@@ -140,7 +140,7 @@ public class BookDB implements DatabaseInfo {
             return null;
         }
     }
-
+    
     //--------------------------------------------------------------------
     public static ArrayList<Book> getByPrice(float from, float to) {
         Book b = null;
@@ -172,7 +172,7 @@ public class BookDB implements DatabaseInfo {
             return null;
         }
     }
-
+    
     //--------------------------------------------------------------------
     public static ArrayList<Book> getByAuthor(String author) {
         Book b = null;
@@ -203,18 +203,19 @@ public class BookDB implements DatabaseInfo {
             return null;
         }
     }
+    
+    
+    
 
     public static void main(String[] args) {
         Book b = new Book();
         ArrayList<Book> bl = new ArrayList<>();
-        bl = BookDB.getAll();
-
-//        bl = BookDB.getByAuthor("Frank Miller");
-//        System.out.println(bl.size());
+        bl = BookDB.getByAuthor("Frank Miller");
+        System.out.println(bl.size());
         for (int i = 0; i < bl.size(); i++) {
             System.out.println(bl.get(i).getbName());
         }
-//        b = BookDB.getById("B0001");
-//        //System.out.println(b.getbName());
+        b = BookDB.getById("B0001");
+        //System.out.println(b.getbName());
     }
 }

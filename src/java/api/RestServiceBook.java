@@ -30,6 +30,7 @@ public class RestServiceBook extends Application{
         return "hello worldddd";
     }
     
+    // http://localhost:8080/BookWebApi/resources/api/book
     @GET
     @Path("/book")
     @Produces(MediaType.APPLICATION_JSON)

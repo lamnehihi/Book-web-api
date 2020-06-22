@@ -20,7 +20,7 @@ import javax.ws.rs.core.MediaType;
  * @author Admin
  */
 @Path("/api")
-@ApplicationPath("/books")
+@ApplicationPath("/resources")
 public class RestServiceBook extends Application{
     
     // http://localhost:8080/BookWebApi/resources/api/sayHello

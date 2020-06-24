@@ -13,26 +13,28 @@ import Model.*;
 import Controller.*;
 import java.util.ArrayList;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  *
  * @author Admin
  */
-@Path("/api")
-@ApplicationPath("/resources")
+@Path("/books")
+@ApplicationPath("/api")
 public class RestServiceBook extends Application{
-    
-    // http://localhost:8080/BookWebApi/resources/api/sayHello
+    //Test
+    // http://localhost:8080/BookWebApi/api/sayHello
     @GET
     @Path("/sayHello")
     public String getHelloMsg() {
         return "hello worldddd";
     }
     
-    // http://localhost:8080/BookWebApi/resources/api/book
+    //get all books
+    // http://localhost:8080/BookWebApi/api/books
     @GET
-    @Path("/book")
     @Produces(MediaType.APPLICATION_JSON)
     public ArrayList<Book> getAll() {
         ArrayList<Book> ls = new ArrayList<>();
@@ -40,15 +42,28 @@ public class RestServiceBook extends Application{
         return ls;
     }
     
-    // http://localhost:8080/BookWebApi/resources/api/book
+    //get book by Id
+    // http://localhost:8080/BookWebApi/api/books/id?id=???
     @GET
-    @Path("/book")
+    @Path("/id")
     @Produces(MediaType.APPLICATION_JSON)
-    public ArrayList<Book> getAll() {
+    public Book getById(@QueryParam("id") String Bid) {
+        Book b = new Book();
+        b = BookDB.getById(Bid);
+        return b;
+    }
+    
+    //get books by keyword
+    // http://localhost:8080/BookWebApi/api/books/keyword?value=???
+    @GET
+    @Path("/keyword")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ArrayList<Book> getByKeyWord(@QueryParam("keyword") String value) {
         ArrayList<Book> ls = new ArrayList<>();
-        ls = BookDB.getAll();
+        ls = BookDB.getByKeyWord(value);
         return ls;
     }
+    
     
     
 }

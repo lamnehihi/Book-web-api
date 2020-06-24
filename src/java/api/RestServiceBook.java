@@ -39,4 +39,16 @@ public class RestServiceBook extends Application{
         ls = BookDB.getAll();
         return ls;
     }
+    
+    // http://localhost:8080/BookWebApi/resources/api/book
+    @GET
+    @Path("/book")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ArrayList<Book> getAll() {
+        ArrayList<Book> ls = new ArrayList<>();
+        ls = BookDB.getAll();
+        return ls;
+    }
+    
+    
 }

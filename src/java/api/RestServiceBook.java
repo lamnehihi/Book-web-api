@@ -22,7 +22,7 @@ import javax.ws.rs.core.Response;
  * @author Admin
  */
 @Path("/books")
-@ApplicationPath("/api")
+@ApplicationPath("api")
 public class RestServiceBook extends Application{
     //Test
     // http://localhost:8080/BookWebApi/api/sayHello
@@ -72,6 +72,17 @@ public class RestServiceBook extends Application{
     public ArrayList<Book> getByCategory(@QueryParam("value") String value) {
         ArrayList<Book> ls = new ArrayList<>();
         ls = BookDB.getByCategoryID(value);
+        return ls;
+    }
+    
+    //get books by price
+    // http://localhost:8080/BookWebApi/api/books/price/?/?
+    @GET
+    @Path("/price")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ArrayList<Book> getByPrice(@QueryParam("from") int from, @QueryParam("to") int to) {
+        ArrayList<Book> ls = new ArrayList<>();
+        ls = BookDB.getByPrice(from, to);
         return ls;
     }
     

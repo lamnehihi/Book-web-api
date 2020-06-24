@@ -76,13 +76,24 @@ public class RestServiceBook extends Application{
     }
     
     //get books by price
-    // http://localhost:8080/BookWebApi/api/books/price/?/?
+    // http://localhost:8080/BookWebApi/api/books/price?from=20000&to=
     @GET
     @Path("/price")
     @Produces(MediaType.APPLICATION_JSON)
     public ArrayList<Book> getByPrice(@QueryParam("from") int from, @QueryParam("to") int to) {
         ArrayList<Book> ls = new ArrayList<>();
         ls = BookDB.getByPrice(from, to);
+        return ls;
+    }
+    
+    //get books by author
+    // http://localhost:8080/BookWebApi/api/books/author
+    @GET
+    @Path("/author")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ArrayList<Book> getByPrice(@QueryParam("value") String value) {
+        ArrayList<Book> ls = new ArrayList<>();
+        ls = BookDB.getByAuthor(value);
         return ls;
     }
     

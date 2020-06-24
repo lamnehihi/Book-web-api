@@ -58,12 +58,22 @@ public class RestServiceBook extends Application{
     @GET
     @Path("/keyword")
     @Produces(MediaType.APPLICATION_JSON)
-    public ArrayList<Book> getByKeyWord(@QueryParam("keyword") String value) {
+    public ArrayList<Book> getByKeyWord(@QueryParam("value") String value) {
         ArrayList<Book> ls = new ArrayList<>();
         ls = BookDB.getByKeyWord(value);
         return ls;
     }
     
+    //get books by category
+    // http://localhost:8080/BookWebApi/api/books/category?value=???
+    @GET
+    @Path("/category")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ArrayList<Book> getByCategory(@QueryParam("value") String value) {
+        ArrayList<Book> ls = new ArrayList<>();
+        ls = BookDB.getByCategoryID(value);
+        return ls;
+    }
     
     
 }

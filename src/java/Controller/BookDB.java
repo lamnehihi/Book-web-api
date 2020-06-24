@@ -210,7 +210,7 @@ public class BookDB implements DatabaseInfo {
     public static void main(String[] args) {
         Book b = new Book();
         ArrayList<Book> bl = new ArrayList<>();
-        bl = BookDB.getByKeyWord("ba");
+        bl = BookDB.getByCategoryID("c001");
         System.out.println(bl.size());
         for (int i = 0; i < bl.size(); i++) {
             System.out.println(bl.get(i).getbName());

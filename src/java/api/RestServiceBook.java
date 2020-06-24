@@ -22,7 +22,7 @@ import javax.ws.rs.core.Response;
  * @author Admin
  */
 @Path("/books")
-@ApplicationPath("/api")
+@ApplicationPath("api")
 public class RestServiceBook extends Application{
     //Test
     // http://localhost:8080/BookWebApi/api/sayHello

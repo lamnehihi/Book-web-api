@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package AdminFunction;
+package Controller;
 
 import static Controller.DatabaseInfo.dbURL;
 import static Controller.DatabaseInfo.driverName;
@@ -15,6 +15,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,15 +29,14 @@ public class BookDBAdmin {
         try {
             Class.forName(driverName);
             try (Connection con = DriverManager.getConnection(dbURL, userDB, passDB)) {
-                PreparedStatement stmt = con.prepareStatement("insert into Books (bID, bName, catID, bPrice, bQuantity, bAuthor, bDes, bCover ) values(?, ?, ?, ?, ?, ?, ?, ?)");
-                stmt.setString(1, b.getbId());
-                stmt.setString(2, b.getbName());
-                stmt.setString(3, b.getCatId());
-                stmt.setFloat(4, b.getbPrice());
-                stmt.setInt(5, b.getbQuantity());
-                stmt.setString(6, b.getbAuthor());
-                stmt.setString(7, b.getbDes());
-                stmt.setString(8, b.getbCover());
+                PreparedStatement stmt = con.prepareStatement("insert into Books (bName, catID, bPrice, bQuantity, bAuthor, bDes, bCover ) values(?, ?, ?, ?, ?, ?, ?)");
+                stmt.setString(1, b.getbName());
+                stmt.setString(2, b.getCatId());
+                stmt.setFloat(3, b.getbPrice());
+                stmt.setInt(4, b.getbQuantity());
+                stmt.setString(5, b.getbAuthor());
+                stmt.setString(6, b.getbDes());
+                stmt.setString(7, b.getbCover());
                 stmt.execute();
                 con.close();
             }
@@ -90,9 +90,17 @@ public class BookDBAdmin {
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-
         }
     }
 
+    public static void main(String[] args) {
+        Book b = new Book("Testbook", "C001", 20000, 3, "Thanh Lam", "Just book test", "");
+//        ArrayList<Book> bl = new ArrayList<>();
+//        for (int i = 0; i < bl.size(); i++) {
+//            System.out.println(bl.get(i).getbName());
+//        }
+        boolean a = BookDBAdmin.addNewBook(b);
+        System.out.println(a);
+    }
     
 }

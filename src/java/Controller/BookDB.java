@@ -203,9 +203,6 @@ public class BookDB implements DatabaseInfo {
             return null;
         }
     }
-    
-    
-    
 
     public static void main(String[] args) {
         Book b = new Book();

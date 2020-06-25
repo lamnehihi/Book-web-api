@@ -12,6 +12,8 @@ import javax.ws.rs.core.Application;
 import Model.*;
 import Controller.*;
 import java.util.ArrayList;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
@@ -97,5 +99,16 @@ public class RestServiceBook extends Application{
         return ls;
     }
     
-    
+    //add new book
+    // http://localhost:8080/BookWebApi/api/books/add
+    @POST
+    @Path("/add")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String addNewBook(Book b) {
+        boolean done = BookDBAdmin.addNewBook(b);
+        if(done) {
+            return "success!";
+        }else return "fail!";
+    }
 }
